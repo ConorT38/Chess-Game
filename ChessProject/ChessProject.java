@@ -194,7 +194,26 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
 			If a Pawn makes it to the top of the other side, the Pawn can turn into any other piece, for 
 			demonstration purposes the Pawn here turns into a Queen.
 		*/
-		if(pieceName.equals("WhitePawn")){
+		if(pieceName.equals("BlackPawn")){
+			validMove=true;
+			if(startY == 6)
+			{
+			if((startX == landingX)&&(((startY-landingY)==1)||(startY-landingY)==2)){
+				validMove=true;
+			}else{
+				validMove=false;
+			}	
+		}
+		else{
+			if((startX==landingX)&&((startY-landingY)==1)){
+				validMove=true;
+			}
+			else{
+				validMove=false;
+			}
+		}
+	}
+		else if(pieceName.equals("WhitePawn")){
 			if(startY == 1)
 			{
 				if((startX == (e.getX()/75))&&((((e.getY()/75)-startY)==1)||((e.getY()/75)-startY)==2))
@@ -260,6 +279,8 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
 				}				
 			}			
 		}
+		
+		/*END OF BLACKPAWN*/
 		if(!validMove){		
 			int location=0;
 			if(startY ==0){
